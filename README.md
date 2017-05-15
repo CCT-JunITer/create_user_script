@@ -8,9 +8,9 @@ This is used for automatically creating Email accounts on http://kas.all-inkl.co
 - Firefox
 
 ## Input
-A csv file named interessenten.csv
+A csv file named `interessenten.csv`
 
-The format should be: first_name,last_name,email_address
+The format should be: `first_name,last_name,email_address`
 
 ## Output
-A output.txt file with all the resulting emails for easy copy-pasting into KAS
+A `output.txt` file with all the resulting emails for easy copy-pasting into KAS
