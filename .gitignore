@@ -1,3 +1,5 @@
 config.py*
 .vscode/
 interessenten.csv
+output.txt
+geckodriver.log*

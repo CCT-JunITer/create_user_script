@@ -82,7 +82,7 @@ def id_generator(size=10, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 def generate_user(output):
-    delay = 3
+    file = open('output.txt','w+')
     table = {
         ord(u'ä'): u'ae',
         ord(u'ö'): u'oe',
@@ -107,9 +107,10 @@ def generate_user(output):
             wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Create new mail account"))).click()
 
             vorname = interessent[0]
-            vorname.replace(" ", ".")
+            vorname = vorname.replace(" ", ".")
             nachname = interessent[1]
-            nachname.replace(" ",".")
+            nachname = nachname.replace(" ",".")
+
             email = interessent[2]           
             mail = wait.until(EC.presence_of_element_located((By.NAME, "mail")))
             username = vorname.lower().decode('utf8').translate(table)+ "." + nachname.lower().decode('utf8').translate(table)
@@ -129,9 +130,12 @@ def generate_user(output):
             wait.until(EC.presence_of_element_located((By.ID, "show_password_yes"))).click()
             wait.until(EC.presence_of_element_located((By.NAME, "button1"))).click()
             send_mail(vorname, nachname, email, user_pw, username)
+            file.write(username+'@cct-ev.de\n')
             print username + ' erstellt mit pw ' + user_pw
+            time.sleep(3)
     finally:
         driver.close()
+        file.close()
         #return user_pw, mailname
         print 'Alle User erstellt'
         
