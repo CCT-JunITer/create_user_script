@@ -73,7 +73,7 @@ dein Team Juniter</p>
     part1 = MIMEText(text, 'html')
     msg.attach(part1)
     s = smtplib.SMTP('w013d91b.kasserver.com')
-    s.login('info@service-cct.de', 'infoservice')
+    s.login('info@service-cct.de',config.email_pw)
     s.sendmail(sender, receiver, msg.as_string())
 
 
