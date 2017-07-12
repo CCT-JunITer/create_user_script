@@ -9,7 +9,7 @@ This is used for automatically creating Email accounts on http://kas.all-inkl.co
 
 You also need a config.py file which includes the allinkl_username, allinkl_pw and the email_pw of info@service-cct.de
 
-##Input
+## Input
 A csv file named interessenten.csv
 The format should be: `first_name,last_name,email_address`
 
