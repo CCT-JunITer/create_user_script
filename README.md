@@ -7,7 +7,7 @@ This is used for automatically creating Email accounts on http://kas.all-inkl.co
 - geckodriver 0.16.0
 - Firefox
 
-To install selenium type `pip install selenium`.
+To install selenium type `pip install -r requirements.txt`.
 
 You can get geckodriver [here](https://github.com/mozilla/geckodriver/releases) and add geckodriver to PATH. To do this move the `geckodriver` file to `/usr/local/bin`.
 
