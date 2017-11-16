@@ -13,11 +13,11 @@ You can get geckodriver [here](https://github.com/mozilla/geckodriver/releases) 
 
 You also need a config.py file which includes the allinkl_username, allinkl_pw and the email_pw of info@service-cct.de. You can just rename `config.sample.py` and fill in the fields.
 
-Use the command `cp config.sample.py config.py`.
+```$ cp config.sample.py config.py```
 
 You also need a csv file named interessenten.csv. You can again just rename to `interessenten.sample.csv`.
 
-Use the command `cp interessenten.sample.csv interessenten.csv`.
+```$ cp interessenten.sample.csv interessenten.csv```.
 
 The format should be `first_name,last_name,email_address`. One row per user you want to create.
 
