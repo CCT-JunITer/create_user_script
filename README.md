@@ -22,4 +22,4 @@ You also need a csv file named interessenten.csv. You can again just rename to `
 The format should be `first_name,last_name,email_address`. One row per user you want to create.
 
 ## Output
-A `output.txt` file with all the resulting emails for easy copy-pasting into KAS. Just copy and paste it into the right mailing lists.
+A `output.txt` file with all the resulting emails for easy copy-pasting into KAS. Just copy and paste it into the right mailing lists (e.g. interessenten@cct-ev.de or aktive@cct-ev.de).
