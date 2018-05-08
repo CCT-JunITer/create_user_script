@@ -3,6 +3,7 @@
 This is used for automatically creating Email accounts on http://kas.all-inkl.com
 
 ## Requirements
+- Python 2
 - Selenium 3.4.1
 - geckodriver 0.16.0
 - Firefox

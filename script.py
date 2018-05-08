@@ -106,12 +106,12 @@ def generate_user(output):
             wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Email Account"))).click()
             wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Create new mail account"))).click()
 
-            vorname = interessent[0]
+            vorname = interessent[0].strip()
             vorname = vorname.replace(" ", ".")
-            nachname = interessent[1]
+            nachname = interessent[1].strip()
             nachname = nachname.replace(" ",".")
 
-            email = interessent[2]           
+            email = interessent[2].strip()
             mail = wait.until(EC.presence_of_element_located((By.NAME, "mail")))
             username = vorname.lower().decode('utf8').translate(table)+ "." + nachname.lower().decode('utf8').translate(table)
             
