@@ -14,6 +14,7 @@ from email.mime.text import MIMEText
 import time
 import csv
 import config
+from retrying import retry
 
 def send_mail(vorname, nachname, email, password, username):
     sender = 'support@juniter.de'
@@ -75,8 +76,43 @@ dein Team Juniter</p>
     s = smtplib.SMTP('w013d91b.kasserver.com')
     s.login('info@service-cct.de',config.email_pw)
     s.sendmail(sender, receiver, msg.as_string())
+    return username
 
+@retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
+def send_signatur_mail(vorname, nachname, receiver):
+    sender = 'support@juniter.de'
+    text= """
+    <html>
+        <head></head>
+        <body>
+            Hallo nochmal %(vorname)s %(nachname)s,<br />
+            <p>Willkommen in deinem neuen E-Mail Postfach. 
+            Dein nächster Schritt sollte es sein deine Signatur einzurichten. 
+            Wie du das anstellst findest du unter folgendem Link: <br />
+            
+            https://wiki.cct-ev.de/index.php/Signatur_erstellen <br />
 
+            Die Logindaten für das Wiki sind die selben wie für die E-Mail. </p>
+
+            <p>Viele Grüße, <br />
+            Team Juniter </p>
+        </body>
+    </html>
+    """ %{"vorname":vorname, "nachname":nachname}
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "Willkommen in deinem E-Mail Postfach!"
+    msg['From'] = sender
+    msg['To'] = receiver
+    part1 = MIMEText(text, 'html')
+    msg.attach(part1)
+    try:
+        s = smtplib.SMTP('w013d91b.kasserver.com')
+        s.login('info@service-cct.de',config.email_pw)
+        s.sendmail(sender, receiver, msg.as_string())
+        print 'Signatur Email versendet'
+    except smtplib.SMTPException as e:
+        print "Couldn't send mail. Trying again..."
+        raise
 
 def id_generator(size=10, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
@@ -129,13 +165,16 @@ def generate_user(output):
             select.select_by_visible_text("cct-ev.de")
             wait.until(EC.presence_of_element_located((By.ID, "show_password_yes"))).click()
             wait.until(EC.presence_of_element_located((By.NAME, "button1"))).click()
-            send_mail(vorname, nachname, email, user_pw, username)
+            receiver = send_mail(vorname, nachname, email, user_pw, username)
             file.write(username+'@cct-ev.de\n')
             print username + ' erstellt mit pw ' + user_pw
+            time.sleep(10)
+            send_signatur_mail(vorname, nachname, receiver)
             time.sleep(3)
     finally:
         driver.close()
         file.close()
+        driver.quit()
         #return user_pw, mailname
         print 'Alle User erstellt'
         
@@ -149,5 +188,5 @@ def readFile(filename):
      return output
 
 #main()
-output = readFile('interessenten.csv')
-generate_user(output)
+interessenten = readFile('interessenten.csv')
+generate_user(interessenten)

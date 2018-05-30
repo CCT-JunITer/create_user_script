@@ -5,10 +5,11 @@ This is used for automatically creating Email accounts on http://kas.all-inkl.co
 ## Requirements
 - Python 2
 - Selenium 3.4.1
+- retrying 1.3.3
 - geckodriver 0.16.0
 - Firefox
 
-To install selenium type `pip install -r requirements.txt`.
+To install the requirements type `pip install -r requirements.txt`.
 
 You can get geckodriver [here](https://github.com/mozilla/geckodriver/releases) and add geckodriver to PATH. To do this move the `geckodriver` file to `/usr/local/bin`.
 
