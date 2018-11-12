@@ -54,13 +54,10 @@ bebilderten Schritt-für-Schritt-Anleitungen auch kurze Videodokumentationen
 zur Einrichtung der wichtigsten Systeme auf Deinem Computer, also z.B.
 E-Mail und Zugriff auf CCT-Daten.</p>
 
-<p>Bei technischen Problemen, z.B. dem Ausfall eines Systems, schreibe bitte
-ein Ticket im Verfolgungssystem unter <br/>
+<p>Bei technischen Problemen oder Fragen, z.B. dem Ausfall eines Systems, schreibe bitte
+dem IT-support über Slack mit<br/>
 
-https://redmine.cct-ev.de/projects/it-support
-
-oder in ganz schlimmen Fällen (z.B. bei nicht-funktionierendem Login) eine
-E-Mail an support@juniter.de</p>
+/IT-support [deine Nachricht]</p>
 
 <p>Viel Erfolg auf deinem weiteren Weg im Verein,<br/>
 dein Team Juniter</p>
